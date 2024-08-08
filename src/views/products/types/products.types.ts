@@ -6,3 +6,8 @@ export interface IProduct {
   description: string;
   image: string;
 }
+
+export enum SORT_TYPES {
+  ASC = "asc",
+  DESC = "desc",
+}

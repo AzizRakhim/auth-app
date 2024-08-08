@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchparams } from "@utils/user-search-params";
+import { SORT_TYPES } from "@products/types/products.types";
 import { fetchProducts } from "@products/store/products.slice";
 import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 
@@ -8,7 +9,8 @@ const useProductsHook = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {
-    searchParams: { page = "1", page_size = "10" },
+    searchParams: { sort = SORT_TYPES.ASC },
+    setSearchParams,
   } = useSearchparams();
   const { loading, products } = useAppSelector((state) => ({
     loading: state.productsSlice.loading,
@@ -16,8 +18,8 @@ const useProductsHook = () => {
   }));
 
   const fetchProductsHandler = useCallback(
-    () => dispatch(fetchProducts({ page, page_size })),
-    [dispatch, page, page_size]
+    () => dispatch(fetchProducts({ sort: sort as SORT_TYPES })),
+    [dispatch, sort]
   );
 
   useEffect(() => {
@@ -29,7 +31,23 @@ const useProductsHook = () => {
     [navigate]
   );
 
-  return { loading, products, fetchProductsHandler, navigateToAddPage };
+  const sortProducts = useCallback(
+    () =>
+      setSearchParams(
+        "sort",
+        sort === SORT_TYPES.ASC ? SORT_TYPES.DESC : SORT_TYPES.ASC
+      ),
+    [setSearchParams, sort]
+  );
+
+  return {
+    loading,
+    products,
+    fetchProductsHandler,
+    navigateToAddPage,
+    sortProducts,
+    sort,
+  };
 };
 
 export default useProductsHook;

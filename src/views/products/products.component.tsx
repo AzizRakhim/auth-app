@@ -1,10 +1,23 @@
 import { Button, Tag } from "antd";
-import { AppstoreAddOutlined, SyncOutlined } from "@ant-design/icons";
+import {
+  AppstoreAddOutlined,
+  SortAscendingOutlined,
+  SortDescendingOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
 import ProductsTable from "@products/components/products-table/products-table.component";
 import useProductsHook from "@products/hooks/products.hook";
+import { SORT_TYPES } from "./types/products.types";
 
 const Products = () => {
-  const { fetchProductsHandler, navigateToAddPage } = useProductsHook();
+  const {
+    fetchProductsHandler,
+    navigateToAddPage,
+    products,
+    loading,
+    sortProducts,
+    sort,
+  } = useProductsHook();
 
   return (
     <div>
@@ -12,19 +25,38 @@ const Products = () => {
         <h2 className="text-[24px] flex gap-[12px]">
           Products
           <sup>
-            <Tag color="#ff6c00">{30}</Tag>
+            <Tag color="#ff6c00">{products.length}</Tag>
           </sup>
         </h2>
         <div className="flex items-center gap-[8px]">
-          <Button icon={<SyncOutlined />} onClick={fetchProductsHandler}>
-            Обновить
+          <Button
+            icon={<SyncOutlined />}
+            onClick={fetchProductsHandler}
+            loading={loading}
+            disabled={loading}
+          >
+            Refresh
+          </Button>
+          <Button
+            icon={
+              sort === SORT_TYPES.ASC ? (
+                <SortAscendingOutlined />
+              ) : (
+                <SortDescendingOutlined />
+              )
+            }
+            onClick={sortProducts}
+            loading={loading}
+            disabled={loading}
+          >
+            Sort
           </Button>
           <Button
             type="primary"
             onClick={navigateToAddPage}
             icon={<AppstoreAddOutlined />}
           >
-            Добавить
+            Add
           </Button>
         </div>
       </div>

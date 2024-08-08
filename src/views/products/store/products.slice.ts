@@ -1,5 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IProduct } from "@products/types/products.types";
+import { IProduct, SORT_TYPES } from "@products/types/products.types";
 import { productService } from "@products/services/products.services";
 
 export type ProductsSliceType = {
@@ -14,15 +14,13 @@ const initialState: ProductsSliceType = {
   error: null,
 };
 
-export const fetchProducts = createAsyncThunk<
-  IProduct[],
-  { page: string; page_size: string }
->("products/fetchProducts", async ({ page, page_size }) => {
-  const response = await productService.getProducts({
-    query: { page, page_size, limit: 10 },
-  });
-  return response;
-});
+export const fetchProducts = createAsyncThunk<IProduct[], { sort: SORT_TYPES }>(
+  "products/fetchProducts",
+  async ({ sort }) => {
+    const response = await productService.getProducts({ query: { sort } });
+    return response;
+  }
+);
 
 export const PaymentInstallmentSlice = createSlice({
   name: "products",

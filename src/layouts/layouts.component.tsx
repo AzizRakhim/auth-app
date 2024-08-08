@@ -1,14 +1,11 @@
-import { message } from "antd";
 import { lazy, Suspense, useMemo } from "react";
 import { useAppSelector } from "@store/store-hooks";
-import PageLoading from "@components/page-loading/page-loading.component";
-import ErrorNotification from "@components/notification/notification.component";
 import Views from "@views";
+import PageLoading from "@components/page-loading/page-loading.component";
+import Notification from "@components/notification/notification.component";
 
 const Layouts = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, contextHolder] = message.useMessage();
-  const token = useAppSelector((state) => state.authSlice?.token);
+  const token = useAppSelector((state) => state.authSlice.token);
 
   const AppLayout = useMemo(
     () =>
@@ -20,9 +17,8 @@ const Layouts = () => {
 
   return (
     <Suspense fallback={<PageLoading />}>
-      <ErrorNotification />
+      <Notification />
       <AppLayout>
-        {contextHolder}
         <Views />
       </AppLayout>
     </Suspense>

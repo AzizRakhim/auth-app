@@ -14,7 +14,7 @@ const Welcome = () => {
           level={2}
           className="text-4xl font-bold mb-4 !mt-4 max-w-[700px]"
         >
-          👋 Welcome to our wonderful application
+          👋 Welcome to my wonderful application
         </Title>
         <Text className="text-lg text-gray-600">Feel free to browse it</Text>
       </div>

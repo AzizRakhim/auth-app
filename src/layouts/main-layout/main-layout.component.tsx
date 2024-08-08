@@ -1,5 +1,5 @@
 import { Button, Layout, Menu } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HTMLProps, FC, useState, useCallback } from "react";
 import {
   LogoutOutlined,
@@ -19,6 +19,7 @@ type MainLayoutType = Pick<HTMLProps<HTMLElement>, "children">;
 const MainLayout: FC<MainLayoutType> = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
 
   const handleMenuClick = useCallback(
@@ -27,6 +28,14 @@ const MainLayout: FC<MainLayoutType> = ({ children }) => {
     },
     [navigate]
   );
+
+  const getMenuActiveKeys = useCallback(() => {
+    const path = location.pathname;
+    const activeKeys = MENUS.filter((menu) =>
+      path.startsWith(`/${menu.key}`)
+    ).map((menu) => menu.key);
+    return activeKeys;
+  }, [location.pathname]);
 
   const handleSignOut = useCallback(() => dispatch(setToken(null)), [dispatch]);
 
@@ -52,6 +61,7 @@ const MainLayout: FC<MainLayoutType> = ({ children }) => {
             </Link>
             <Menu
               mode="inline"
+              selectedKeys={getMenuActiveKeys()}
               items={MENUS.map((menu) => ({
                 key: menu.key,
                 icon: menu.icon,

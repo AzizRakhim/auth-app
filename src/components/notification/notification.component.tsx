@@ -4,7 +4,7 @@ import { NotificationViewType } from "@types";
 import { setNotification } from "@store/slices/notification.slice";
 import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 
-const ErrorNotification = () => {
+const Notification = () => {
   const dispatch = useAppDispatch();
   const notification = useAppSelector(
     (state) => state.notificationSlice.notification
@@ -22,7 +22,7 @@ const ErrorNotification = () => {
       });
     }
   }, [notification, api, dispatch]);
-  return <>{contextHolder}</>;
+  return contextHolder;
 };
 
-export default ErrorNotification;
+export default Notification;
