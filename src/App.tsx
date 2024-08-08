@@ -1,4 +1,4 @@
-import Layouts from "@layouts";
+import Layouts from "@layouts/layouts.component";
 
 function App() {
   return <Layouts />;

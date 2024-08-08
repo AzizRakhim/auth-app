@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import PublicRoute from "@components/routes/public-route";
 import ProtectedRoute from "@components/routes/protected-route";
 import appConfig from "@configs";
 import routesConfig from "@configs/routes.config";
-import PublicRoute from "@components/routes/public-route";
 
 const { privateRoutes, publicRoutes } = routesConfig;
 const { authenticatedEntryPath, unAuthenticatedEntryPath } = appConfig;

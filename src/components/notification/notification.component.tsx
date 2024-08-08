@@ -1,7 +1,8 @@
-import { notification as notify } from "antd";
-import { useAppDispatch, useAppSelector } from "@store/store-hooks";
-import { setNotification } from "@store/slices/notification.slice";
 import { useEffect } from "react";
+import { notification as notify } from "antd";
+import { NotificationViewType } from "@types";
+import { setNotification } from "@store/slices/notification.slice";
+import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 
 const ErrorNotification = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const ErrorNotification = () => {
 
   useEffect(() => {
     if (notification) {
-      api[notification.type || "success"]({
+      api[notification.type as NotificationViewType]({
         message: notification.title,
         duration: 0,
         onClose: () => dispatch(setNotification({ notification: null })),

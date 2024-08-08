@@ -1,6 +1,6 @@
 import { api } from "@services";
 import type { BaseService, RequestConfig } from "@services";
-import { LoginResponse, SignInFieldType } from "@auth/types";
+import { LoginResponse, SignInFieldType } from "@auth/types/auth.types";
 
 export class AuthService {
   constructor(public api: BaseService) {}

@@ -1,9 +1,9 @@
 import { message } from "antd";
 import { lazy, Suspense, useMemo } from "react";
-import Views from "@views";
-import PageLoading from "@components/page-loading";
 import { useAppSelector } from "@store/store-hooks";
-import ErrorNotification from "@components/notification";
+import PageLoading from "@components/page-loading/page-loading.component";
+import ErrorNotification from "@components/notification/notification.component";
+import Views from "@views";
 
 const Layouts = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,8 +13,8 @@ const Layouts = () => {
   const AppLayout = useMemo(
     () =>
       token
-        ? lazy(() => import("@layouts/main-layout"))
-        : lazy(() => import("@layouts/auth-layout")),
+        ? lazy(() => import("@layouts/main-layout/main-layout.component"))
+        : lazy(() => import("@layouts/auth-layout/auth-layout.component")),
     [token]
   );
 

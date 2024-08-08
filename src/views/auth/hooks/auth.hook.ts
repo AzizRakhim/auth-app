@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
-import { setToken } from "@auth/store";
-import { authService } from "@auth/service";
-import { SignInFieldType } from "@auth/types";
+import { setToken } from "@auth/store/auth.slice";
 import { useAppDispatch } from "@store/store-hooks";
+import { SignInFieldType } from "@auth/types/auth.types";
+import { authService } from "@auth/service/auth.services";
 import { setNotification } from "@store/slices/notification.slice";
 
 const useAuthHook = () => {

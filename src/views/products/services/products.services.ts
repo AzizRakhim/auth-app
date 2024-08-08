@@ -1,5 +1,5 @@
 import { api } from "@services";
-import { IProduct } from "@products/types";
+import { IProduct } from "@products/types/products.types";
 import type { BaseService, RequestConfig } from "@services";
 
 export class ProductService {

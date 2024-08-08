@@ -10,9 +10,9 @@ import { persistor, store } from "@store";
 import "@styles/main.css";
 
 createRoot(document.getElementById("root")!).render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ErrorBoundary>
+  <ErrorBoundary>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <ConfigProvider
             theme={{
@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
             <App />
           </ConfigProvider>
         </BrowserRouter>
-      </ErrorBoundary>
-    </PersistGate>
-  </Provider>
+      </PersistGate>
+    </Provider>
+  </ErrorBoundary>
 );

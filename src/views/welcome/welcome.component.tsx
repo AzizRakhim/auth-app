@@ -1,4 +1,5 @@
 import { Typography } from "antd";
+import Logo from "@assets/svgs/logo.svg";
 
 const { Title, Text } = Typography;
 
@@ -7,11 +8,7 @@ const Welcome = () => {
     <div className="h-full flex items-center justify-center">
       <div className="text-center">
         <div className="flex justify-center">
-          <img
-            src="https://geoinfocom.uz/sites/all/themes/geoinfocom/assets/img/logo-sq.png"
-            alt="logo"
-            width={100}
-          />
+          <img src={Logo} alt="logo" width={100} />
         </div>
         <Title
           level={2}

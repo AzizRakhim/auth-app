@@ -7,7 +7,9 @@ import {
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
 import { MENUS } from "@constants";
-import { setToken } from "@auth/store";
+import Logo from "@assets/svgs/logo.svg";
+import { setToken } from "@auth/store/auth.slice";
+import LongLogo from "@assets/images/long-log.webp";
 import { useAppDispatch } from "@store/store-hooks";
 
 const { Header, Sider, Content } = Layout;
@@ -41,9 +43,11 @@ const MainLayout: FC<MainLayoutType> = ({ children }) => {
           <div className="flex flex-col gap-[16px]">
             <Link to={"/welcome"} className="flex justify-center px-[4px]">
               <img
-                src="https://geoinfocom.uz/sites/all/themes/geoinfocom/assets/img/logo-sq.png"
+                src={collapsed ? Logo : LongLogo}
                 alt="logo"
-                width={100}
+                width={90}
+                height={50}
+                className="w-[90px] h-[50px]"
               />
             </Link>
             <Menu
@@ -84,6 +88,7 @@ const MainLayout: FC<MainLayoutType> = ({ children }) => {
           style={{
             padding: 24,
             minHeight: 280,
+            overflowY: "auto",
           }}
         >
           {children}
