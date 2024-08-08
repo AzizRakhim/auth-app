@@ -8,7 +8,7 @@ import Views from "@views";
 const Layouts = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, contextHolder] = message.useMessage();
-  const token = useAppSelector((state) => state.authSlice.token);
+  const token = useAppSelector((state) => state.authSlice?.token);
 
   const AppLayout = useMemo(
     () =>

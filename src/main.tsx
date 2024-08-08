@@ -12,7 +12,7 @@ import "@styles/main.css";
 createRoot(document.getElementById("root")!).render(
   <ErrorBoundary>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={"Loading ... persistor"} persistor={persistor}>
         <BrowserRouter>
           <ConfigProvider
             theme={{

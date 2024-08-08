@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { authSlice } from "@auth/store/auth.slice";
+import authSlice from "@auth/store/auth.slice";
 import productsSlice from "@products/store/products.slice";
 import notificationSlice from "@store/slices/notification.slice";
 
