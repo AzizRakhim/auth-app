@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app": ["./src/App.tsx"],
+      "@constants": ["./src/constants/index"],
+      "@constants/*": ["./src/constants/*"],
+      "@store": ["./src/store/index"],
+      "@store/*": ["./src/store/*"],
+      "@layouts": ["./src/layouts/index"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@configs": ["./src/configs"],
+      "@configs/*": ["./src/configs/*"],
+      "@views": ["./src/views/index.tsx"],
+      "@services": ["./src/services/base.service.ts"],
+      "@types": ["./src/types/index.ts"],
+      "@styles/*": ["./src/styles/*"],
+      "@components/*": ["./src/components/*"],
+      "@auth/*": ["./src/views/auth/*"],
+      "@welcome/*": ["./src/views/welcome/*"],
+      "@products/*": ["./src/views/products/*"]
+    }
+  }
+}
