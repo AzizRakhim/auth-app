@@ -1,5 +1,11 @@
+import CustomTable from "@components/custom-table";
+
 const Products = () => {
-  return <div>Products</div>;
+  return (
+    <div>
+      <CustomTable />
+    </div>
+  );
 };
 
 export default Products;

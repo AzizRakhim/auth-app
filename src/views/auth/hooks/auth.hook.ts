@@ -17,15 +17,15 @@ const useAuthHook = () => {
 
         if (res.token) {
           dispatch(setToken(res?.token));
-        } else {
-          dispatch(
-            setNotification({
-              notification: { type: "error", title: "Wrong credentials" },
-            })
-          );
         }
 
         return res;
+      } catch {
+        dispatch(
+          setNotification({
+            notification: { type: "error", title: "Wrong credentials" },
+          })
+        );
       } finally {
         setLoading(false);
       }
