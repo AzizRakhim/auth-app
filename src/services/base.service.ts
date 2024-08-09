@@ -121,7 +121,7 @@ export class BaseService {
       method: "PUT",
     });
 
-  delete = <TRequest, TResponse = void>(
+  delete = <TRequest, TResponse>(
     endpoint: string,
     body?: TRequest,
     options: RequestConfig = {}

@@ -8,10 +8,13 @@ export class ProductService {
   getProducts = (config?: RequestConfig) =>
     this.api.get<IProduct[]>("/products", config);
 
-  deleteProduct = (id: number) => this.api.delete(`/products/${id}`);
+  deleteProduct = (id: number) =>
+    this.api.delete<unknown, IProduct>(`/products/${id}`);
 
   addProduct = (data: IProductForm, config?: RequestConfig) =>
     this.api.post<IProductForm, IProduct>("/products", data, config);
+
+  getProductById = (id: string) => this.api.get<IProduct>(`/products/${id}`);
 }
 
 export const productService = new ProductService(api);

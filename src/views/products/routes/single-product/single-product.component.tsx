@@ -6,10 +6,18 @@ import { RULE } from "@constants";
 import TextArea from "antd/es/input/TextArea";
 
 const SingleProduct = () => {
-  const { $breadcrumbs, onFinish, form, update, formLoading } =
-    useSingleProductHook();
+  const {
+    $breadcrumbs,
+    onFinish,
+    form,
+    update,
+    formLoading,
+    deleteProduct,
+    loading,
+  } = useSingleProductHook();
+
   return (
-    <PageLayout loading={false} breadcrumbs={$breadcrumbs}>
+    <PageLayout loading={loading} breadcrumbs={$breadcrumbs}>
       <Form
         onFinish={onFinish}
         autoComplete="off"
@@ -26,6 +34,7 @@ const SingleProduct = () => {
               danger
               loading={formLoading}
               disabled={formLoading}
+              onClick={deleteProduct}
             >
               Delete
             </Button>
