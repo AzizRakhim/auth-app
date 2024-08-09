@@ -49,11 +49,21 @@ const useSingleProductHook = () => {
     async (values: IProductForm) => {
       try {
         setFormLoading(true);
-        const res = await productService.addProduct(values);
 
-        if (res?.id) {
-          message.success("Product successfully added");
-          navigate("/products");
+        if (!update) {
+          const res = await productService.addProduct(values);
+
+          if (res?.id) {
+            message.success("Product successfully added");
+            navigate("/products");
+          }
+        } else {
+          const res = await productService.updateProduct(update, values);
+
+          if (res?.id) {
+            message.success("Product successfully updated");
+            navigate("/products");
+          }
         }
       } catch {
         message.error("Something went wrong");
@@ -61,7 +71,7 @@ const useSingleProductHook = () => {
         setFormLoading(false);
       }
     },
-    [navigate]
+    [navigate, update]
   );
 
   const deleteProduct = useCallback(() => {

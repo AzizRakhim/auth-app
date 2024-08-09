@@ -15,6 +15,9 @@ export class ProductService {
     this.api.post<IProductForm, IProduct>("/products", data, config);
 
   getProductById = (id: string) => this.api.get<IProduct>(`/products/${id}`);
+
+  updateProduct = (id: string, data: IProductForm) =>
+    this.api.put<IProductForm, IProduct>(`/products/${id}`, data);
 }
 
 export const productService = new ProductService(api);
