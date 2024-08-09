@@ -21,3 +21,5 @@ export const MENUS = [
     label: "Users",
   },
 ];
+
+export const RULE = { min: 2, message: "Minimum 2 letters" };

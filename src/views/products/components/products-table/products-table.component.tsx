@@ -48,6 +48,7 @@ const ProductsTable = () => {
         dataIndex: "price",
         key: "price",
         width: 100,
+        align: "center",
       },
       {
         title: "Category",
@@ -61,15 +62,52 @@ const ProductsTable = () => {
         key: "description",
       },
       {
+        title: "Image",
+        dataIndex: "image",
+        key: "image",
+        render: (image) => {
+          return (
+            <div className="w-[50px] h-[50px]">
+              <img
+                src={image}
+                alt={"product image"}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          );
+        },
+        align: "center",
+      },
+      {
+        title: "Rate",
+        dataIndex: "rating",
+        key: "rate",
+        render: (rating) => {
+          return rating.rate;
+        },
+        align: "center",
+      },
+      {
+        title: "Rate count",
+        dataIndex: "rating",
+        key: "rate-count",
+        render: (rating) => {
+          return rating.count;
+        },
+        width: 150,
+        align: "center",
+      },
+      {
         title: "Actions",
         key: "actions",
-        align: "right",
+        align: "center",
         render: (rowData) => {
           return (
             <Button
               type="primary"
               icon={<DeleteFilled />}
               onClick={(e) => deleteProduct(e, rowData?.id)}
+              danger
             />
           );
         },
@@ -81,6 +119,7 @@ const ProductsTable = () => {
   return (
     <div className="shadow-lg">
       <CustomTable
+        scroll={{ x: 1000 }}
         columns={columns}
         loading={loading}
         dataSource={products}

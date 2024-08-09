@@ -2,7 +2,6 @@ import { lazy, Suspense, useMemo } from "react";
 import { useAppSelector } from "@store/store-hooks";
 import Views from "@views";
 import PageLoading from "@components/page-loading/page-loading.component";
-import Notification from "@components/notification/notification.component";
 
 const Layouts = () => {
   const token = useAppSelector((state) => state.authSlice.token);
@@ -17,7 +16,6 @@ const Layouts = () => {
 
   return (
     <Suspense fallback={<PageLoading />}>
-      <Notification />
       <AppLayout>
         <Views />
       </AppLayout>

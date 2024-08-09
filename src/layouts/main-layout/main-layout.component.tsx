@@ -40,7 +40,7 @@ const MainLayout: FC<MainLayoutType> = ({ children }) => {
   const handleSignOut = useCallback(() => dispatch(setToken(null)), [dispatch]);
 
   return (
-    <Layout className="h-[100dvh]">
+    <Layout className={`h-[100dvh] ${collapsed ? "small" : ""}`}>
       <Sider
         trigger={null}
         collapsible

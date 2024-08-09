@@ -22,7 +22,7 @@ export const fetchProducts = createAsyncThunk<IProduct[], { sort: SORT_TYPES }>(
   }
 );
 
-export const PaymentInstallmentSlice = createSlice({
+export const ProductsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
@@ -50,6 +50,6 @@ export const PaymentInstallmentSlice = createSlice({
   },
 });
 
-export const { setProducts } = PaymentInstallmentSlice.actions;
+export const { setProducts } = ProductsSlice.actions;
 
-export default PaymentInstallmentSlice.reducer;
+export default ProductsSlice.reducer;
