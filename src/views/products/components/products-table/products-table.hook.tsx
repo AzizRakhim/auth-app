@@ -6,8 +6,8 @@ import { DeleteFilled, ExclamationCircleFilled } from "@ant-design/icons";
 import { useSearchparams } from "@utils/user-search-params";
 import { fetchProducts } from "@products/store/products.slice";
 import { useAppDispatch, useAppSelector } from "@store/store-hooks";
+import { productService } from "@products/services/product.services";
 import { IProduct, SORT_TYPES } from "@products/types/products.types";
-import { productService } from "@products/services/products.services";
 
 const { confirm } = Modal;
 

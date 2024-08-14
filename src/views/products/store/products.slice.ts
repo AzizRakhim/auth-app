@@ -1,19 +1,17 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IProduct, SORT_TYPES } from "@products/types/products.types";
-import { productService } from "@products/services/products.services";
+import { productService } from "@products/services/product.services";
 
 export type ProductsSliceType = {
   products: IProduct[];
   singleProduct: IProduct | null;
   loading: boolean;
-  error: string | null;
 };
 
 const initialState: ProductsSliceType = {
   products: [],
   singleProduct: null,
   loading: false,
-  error: null,
 };
 
 export const fetchProducts = createAsyncThunk<IProduct[], { sort: SORT_TYPES }>(
@@ -47,7 +45,6 @@ export const ProductsSlice = createSlice({
     builder
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(
         fetchProducts.fulfilled,
@@ -56,13 +53,11 @@ export const ProductsSlice = createSlice({
           state.products = action.payload;
         }
       )
-      .addCase(fetchProducts.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to fetch products";
       })
       .addCase(fetchSingleProduct.pending, (state) => {
         state.loading = true;
-        state.error = null;
       })
       .addCase(
         fetchSingleProduct.fulfilled,
@@ -71,9 +66,8 @@ export const ProductsSlice = createSlice({
           state.singleProduct = action.payload;
         }
       )
-      .addCase(fetchSingleProduct.rejected, (state, action) => {
+      .addCase(fetchSingleProduct.rejected, (state) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to fetch the product";
       });
   },
 });

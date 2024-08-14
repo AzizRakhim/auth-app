@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 import { useSearchparams } from "@utils/user-search-params";
 import { IProductForm } from "@products/types/products.types";
 import { fetchSingleProduct } from "@products/store/products.slice";
-import { productService } from "@products/services/products.services";
+import { productService } from "@products/services/product.services";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 
 const { confirm } = Modal;
@@ -23,6 +23,7 @@ const useSingleProductHook = () => {
   const {
     searchParams: { update },
   } = useSearchparams();
+  const image = Form.useWatch("image", form);
 
   const $breadcrumbs = useMemo(() => {
     return [...breadcrumbs, { title: update ? "Edit product" : "Add product" }];
@@ -101,6 +102,7 @@ const useSingleProductHook = () => {
     formLoading,
     deleteProduct,
     loading,
+    image,
   };
 };
 

@@ -27,9 +27,9 @@ const privateRoutes = [
     ),
   },
   {
-    key: "carts",
-    path: `/carts`,
-    component: lazy(() => import("@carts/carts.component")),
+    key: "categories",
+    path: `/categories`,
+    component: lazy(() => import("@categories/categories.component")),
   },
   {
     key: "users",

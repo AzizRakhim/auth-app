@@ -19,7 +19,7 @@
       "@views": ["./src/views/view.component.tsx"],
       "@services": ["./src/services/base.service.ts"],
       "@auth/*": ["./src/views/auth/*"],
-      "@carts/*": ["./src/views/carts/*"],
+      "@categories/*": ["./src/views/categories/*"],
       "@users/*": ["./src/views/users/*"],
       "@welcome/*": ["./src/views/welcome/*"],
       "@products/*": ["./src/views/products/*"]

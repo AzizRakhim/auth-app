@@ -14,6 +14,7 @@ const SingleProduct = () => {
     formLoading,
     deleteProduct,
     loading,
+    image,
   } = useSingleProductHook();
 
   return (
@@ -67,19 +68,29 @@ const SingleProduct = () => {
               <Input type="number" placeholder="Price" />
             </Form.Item>
             <Form.Item
-              label="Image link"
-              name="image"
-              rules={[{ required: true, message: "Enter image link" }, RULE]}
-            >
-              <Input type="text" placeholder="Image link" />
-            </Form.Item>
-            <Form.Item
               label="Category"
               name="category"
               rules={[{ required: true, message: "Enter category" }, RULE]}
             >
               <Input type="text" placeholder="Category" />
             </Form.Item>
+            <div className="flex gap-[12px]">
+              <Form.Item
+                label="Image link"
+                name="image"
+                rules={[{ required: true, message: "Enter image link" }, RULE]}
+                className="w-full"
+              >
+                <Input type="text" placeholder="Image link" />
+              </Form.Item>
+              {image && (
+                <img
+                  src={image}
+                  alt="product image"
+                  className="min-w-[50px] w-[50px] h-[50px] min-h-[50px] mt-[28px] object-cover"
+                />
+              )}
+            </div>
             <Form.Item
               label="Description"
               name="description"
