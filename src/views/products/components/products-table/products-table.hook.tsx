@@ -3,11 +3,12 @@ import { Button, message, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import { MouseEvent, useCallback, useMemo } from "react";
 import { DeleteFilled, ExclamationCircleFilled } from "@ant-design/icons";
+import { SORT_TYPES } from "@types";
+import { IProduct } from "@products/types/products.types";
 import { useSearchparams } from "@utils/user-search-params";
 import { fetchProducts } from "@products/store/products.slice";
-import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 import { productService } from "@products/services/product.services";
-import { IProduct, SORT_TYPES } from "@products/types/products.types";
+import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 
 const { confirm } = Modal;
 
@@ -26,7 +27,7 @@ const useProductsTableHook = () => {
     (e: MouseEvent<HTMLElement, globalThis.MouseEvent>, id: number) => {
       e.stopPropagation();
       confirm({
-        title: "Are you sure delete this product?",
+        title: "Are you sure to delete this product?",
         icon: <ExclamationCircleFilled />,
         okText: "Yes",
         okType: "danger",

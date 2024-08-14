@@ -13,11 +13,6 @@ type RatingType = {
   count: number;
 };
 
-export enum SORT_TYPES {
-  ASC = "asc",
-  DESC = "desc",
-}
-
 export type IProductForm = {
   title: string;
   price: number;

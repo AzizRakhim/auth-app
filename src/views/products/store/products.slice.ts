@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { IProduct, SORT_TYPES } from "@products/types/products.types";
+import { SORT_TYPES } from "@types";
+import { IProduct } from "@products/types/products.types";
 import { productService } from "@products/services/product.services";
 
 export type ProductsSliceType = {

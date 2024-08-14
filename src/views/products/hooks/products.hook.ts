@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { SORT_TYPES } from "@types";
 import { useSearchparams } from "@utils/user-search-params";
-import { SORT_TYPES } from "@products/types/products.types";
 import { fetchProducts } from "@products/store/products.slice";
 import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 

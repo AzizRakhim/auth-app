@@ -6,8 +6,8 @@ import {
   SyncOutlined,
 } from "@ant-design/icons";
 import ProductsTable from "@products/components/products-table/products-table.component";
+import { SORT_TYPES } from "@types";
 import useProductsHook from "@products/hooks/products.hook";
-import { SORT_TYPES } from "./types/products.types";
 
 const Products = () => {
   const {
