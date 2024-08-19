@@ -1,9 +1,9 @@
 import { Button, Form, Input } from "antd";
-import PageLayout from "@layouts/page-layout/page-layout.component";
-import useSingleProductHook from "@products/routes/single-product/single-product.hook";
-import { DeleteFilled, SaveOutlined } from "@ant-design/icons";
-import { RULE } from "@constants";
 import TextArea from "antd/es/input/TextArea";
+import { DeleteFilled, SaveOutlined } from "@ant-design/icons";
+import PageLayout from "@layouts/page-layout/page-layout.component";
+import { RULE } from "@constants";
+import useSingleProductHook from "@products/routes/single-product/single-product.hook";
 
 const SingleProduct = () => {
   const {

@@ -6,3 +6,7 @@ export enum SORT_TYPES {
   ASC = "asc",
   DESC = "desc",
 }
+
+export type MapClickEvent = {
+  get(type: "coords"): number[];
+};

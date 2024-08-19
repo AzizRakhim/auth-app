@@ -36,6 +36,13 @@ const privateRoutes = [
     path: `/users`,
     component: lazy(() => import("@users/users.component")),
   },
+  {
+    key: "users-id",
+    path: `/users/user`,
+    component: lazy(
+      () => import("@users/routes/single-user/single-user.component")
+    ),
+  },
 ];
 
 export default { publicRoutes, privateRoutes };

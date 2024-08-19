@@ -6,11 +6,13 @@ import { userService } from "@users/services/user.services";
 export type UsersSliceType = {
   users: IUser[];
   loading: boolean;
+  singleUser: IUser | null;
 };
 
 const initialState: UsersSliceType = {
   users: [],
   loading: false,
+  singleUser: null,
 };
 
 export const fetchUsers = createAsyncThunk<IUser[], { sort: SORT_TYPES }>(
@@ -22,12 +24,24 @@ export const fetchUsers = createAsyncThunk<IUser[], { sort: SORT_TYPES }>(
   }
 );
 
+export const fetchSingleUser = createAsyncThunk<IUser, string>(
+  "users/fetchSingleUser",
+  async (id) => {
+    const response = await userService.getUserById(id);
+
+    return response;
+  }
+);
+
 export const UsersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
     setUsers: (state, { payload }: PayloadAction<IUser[]>) => {
       state.users = payload;
+    },
+    setSingleUser: (state, { payload }: PayloadAction<IUser | null>) => {
+      state.singleUser = payload;
     },
   },
   extraReducers: (builder) => {
@@ -44,10 +58,23 @@ export const UsersSlice = createSlice({
       )
       .addCase(fetchUsers.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(fetchSingleUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(
+        fetchSingleUser.fulfilled,
+        (state, action: PayloadAction<IUser>) => {
+          state.loading = false;
+          state.singleUser = action.payload;
+        }
+      )
+      .addCase(fetchSingleUser.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
 
-export const { setUsers } = UsersSlice.actions;
+export const { setUsers, setSingleUser } = UsersSlice.actions;
 
 export default UsersSlice.reducer;

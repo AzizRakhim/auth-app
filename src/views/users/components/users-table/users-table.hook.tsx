@@ -1,5 +1,6 @@
 import { ColumnsType } from "antd/es/table";
 import { Button, message, Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 import { MouseEvent, useCallback, useMemo } from "react";
 import { DeleteFilled, ExclamationCircleFilled } from "@ant-design/icons";
 import { SORT_TYPES } from "@types";
@@ -12,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 const { confirm } = Modal;
 
 const useUsersTableHook = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { loading, users } = useAppSelector((state) => ({
     loading: state.usersSlice.loading,
@@ -155,7 +157,26 @@ const useUsersTableHook = () => {
     [deleteUser]
   );
 
-  return { loading, users, columns };
+  const onRowHandle = useCallback(
+    (user: IUser) => {
+      return {
+        onClick: (event: MouseEvent) => {
+          if (event.ctrlKey) {
+            window.open(`/users/user?update=${user?.id}`, "_blank");
+          }
+        },
+        onDoubleClick: () => {
+          navigate(`/users/user?update=${user?.id}`);
+        },
+        style: {
+          cursor: "pointer",
+        },
+      };
+    },
+    [navigate]
+  );
+
+  return { loading, users, columns, onRowHandle };
 };
 
 export default useUsersTableHook;

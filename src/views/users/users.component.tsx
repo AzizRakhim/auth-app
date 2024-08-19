@@ -1,6 +1,7 @@
 import { Button, Tag } from "antd";
 import {
   SyncOutlined,
+  AppstoreAddOutlined,
   SortAscendingOutlined,
   SortDescendingOutlined,
 } from "@ant-design/icons";
@@ -9,8 +10,14 @@ import { SORT_TYPES } from "@types";
 import useUsersHook from "@users/hooks/users.hook";
 
 const Users = () => {
-  const { users, loading, fetchUsersHandler, sort, sortProducts } =
-    useUsersHook();
+  const {
+    sort,
+    users,
+    loading,
+    sortProducts,
+    navigateToAddPage,
+    fetchUsersHandler,
+  } = useUsersHook();
 
   return (
     <div>
@@ -43,6 +50,13 @@ const Users = () => {
             disabled={loading}
           >
             Sort
+          </Button>
+          <Button
+            type="primary"
+            onClick={navigateToAddPage}
+            icon={<AppstoreAddOutlined />}
+          >
+            Add
           </Button>
         </div>
       </div>

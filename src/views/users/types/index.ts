@@ -25,3 +25,13 @@ type GeolocationType = {
   lat: string;
   long: string;
 };
+
+export type UserFormType = Omit<IUser, "phone"> & {
+  phone: {
+    countryCode: number;
+    areaCode: string;
+    phoneNumber: string;
+    isoCode: string;
+  };
+  confirm: string;
+};

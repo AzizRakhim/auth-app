@@ -1,10 +1,12 @@
 import { useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { SORT_TYPES } from "@types";
 import { fetchUsers } from "@users/store/users.slice";
 import { useSearchparams } from "@utils/user-search-params";
 import { useAppDispatch, useAppSelector } from "@store/store-hooks";
 
 const useUsersHook = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const {
     searchParams: { sort = SORT_TYPES.ASC },
@@ -33,12 +35,18 @@ const useUsersHook = () => {
     [setSearchParams, sort]
   );
 
+  const navigateToAddPage = useCallback(
+    () => navigate("/users/user"),
+    [navigate]
+  );
+
   return {
-    loading,
-    users,
-    fetchUsersHandler,
     sort,
+    users,
+    loading,
     sortProducts,
+    fetchUsersHandler,
+    navigateToAddPage,
   };
 };
 
