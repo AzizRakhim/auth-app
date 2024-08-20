@@ -137,7 +137,7 @@ const useSingleCartHook = () => {
 
   const deleteCart = useCallback(() => {
     confirm({
-      title: "Are you sure delete this product?",
+      title: "Are you sure delete this cart?",
       icon: <ExclamationCircleFilled />,
       okText: "Yes",
       okType: "danger",
