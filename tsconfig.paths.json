@@ -22,7 +22,8 @@
       "@categories/*": ["./src/views/categories/*"],
       "@users/*": ["./src/views/users/*"],
       "@welcome/*": ["./src/views/welcome/*"],
-      "@products/*": ["./src/views/products/*"]
+      "@products/*": ["./src/views/products/*"],
+      "@carts/*": ["./src/views/carts/*"]
     }
   }
 }

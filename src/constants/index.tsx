@@ -2,6 +2,7 @@ import {
   ProductOutlined,
   UserSwitchOutlined,
   OrderedListOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 
 export const MENUS = [
@@ -19,6 +20,11 @@ export const MENUS = [
     key: "users",
     icon: <UserSwitchOutlined />,
     label: "Users",
+  },
+  {
+    key: "carts",
+    icon: <ShoppingCartOutlined />,
+    label: "Carts",
   },
 ];
 

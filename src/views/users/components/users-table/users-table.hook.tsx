@@ -34,7 +34,6 @@ const useUsersTableHook = () => {
         cancelText: "No",
         onOk: async () => {
           const res = await userService.deleteUser(id);
-          console.log(sort);
           if (res?.id) {
             message.success("Removed");
             dispatch(fetchUsers({ sort: sort as SORT_TYPES }));
@@ -160,10 +159,8 @@ const useUsersTableHook = () => {
   const onRowHandle = useCallback(
     (user: IUser) => {
       return {
-        onClick: (event: MouseEvent) => {
-          if (event.ctrlKey) {
-            window.open(`/users/user?update=${user?.id}`, "_blank");
-          }
+        onClick: () => {
+          navigate(`/users/user?update=${user?.id}`);
         },
         onDoubleClick: () => {
           navigate(`/users/user?update=${user?.id}`);

@@ -1,7 +1,11 @@
 import PhoneInput from "antd-phone-input";
 import { Button, Form, Input, InputNumber } from "antd";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
-import { DeleteFilled, SaveOutlined } from "@ant-design/icons";
+import {
+  DeleteFilled,
+  SaveOutlined,
+  ShoppingOutlined,
+} from "@ant-design/icons";
 import PageLayout from "@layouts/page-layout/page-layout.component";
 import { RULE } from "@constants";
 import MapPin from "@assets/svgs/map-pin.svg";
@@ -31,7 +35,14 @@ const SingleUser = () => {
         className="pb-[90px]"
         scrollToFirstError
       >
-        <h2 className="text-[24px]">{$breadcrumbs?.at(-1)?.title}</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-[24px]">{$breadcrumbs?.at(-1)?.title}</h2>
+          {update && (
+            <Button icon={<ShoppingOutlined />} type="primary">
+              To user's carts
+            </Button>
+          )}
+        </div>
         <div className="flex justify-end fixed bottom-0 right-0 py-[9px] bg-white z-[1] shadow-lg  border-t border-solid border-gray dynamic-form-footer gap-[12px] px-[32px]">
           {update && (
             <Button

@@ -43,6 +43,25 @@ const privateRoutes = [
       () => import("@users/routes/single-user/single-user.component")
     ),
   },
+  {
+    key: "users-cart-id",
+    path: `/users/cart/id`,
+    component: lazy(
+      () => import("@users/routes/single-user/single-user.component")
+    ),
+  },
+  {
+    key: "carts",
+    path: `/carts`,
+    component: lazy(() => import("@carts/carts.component")),
+  },
+  {
+    key: "carts-id",
+    path: `/carts/cart`,
+    component: lazy(
+      () => import("@carts/routes/single-cart/single-cart.component")
+    ),
+  },
 ];
 
 export default { publicRoutes, privateRoutes };

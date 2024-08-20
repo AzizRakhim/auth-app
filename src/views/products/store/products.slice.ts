@@ -15,13 +15,13 @@ const initialState: ProductsSliceType = {
   loading: false,
 };
 
-export const fetchProducts = createAsyncThunk<IProduct[], { sort: SORT_TYPES }>(
-  "products/fetchProducts",
-  async ({ sort }) => {
-    const response = await productService.getProducts({ query: { sort } });
-    return response;
-  }
-);
+export const fetchProducts = createAsyncThunk<
+  IProduct[],
+  { sort?: SORT_TYPES }
+>("products/fetchProducts", async ({ sort = SORT_TYPES.ASC }) => {
+  const response = await productService.getProducts({ query: { sort } });
+  return response;
+});
 
 export const fetchSingleProduct = createAsyncThunk<IProduct, string>(
   "products/fetchSingleProduct",

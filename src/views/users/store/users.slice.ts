@@ -15,9 +15,9 @@ const initialState: UsersSliceType = {
   singleUser: null,
 };
 
-export const fetchUsers = createAsyncThunk<IUser[], { sort: SORT_TYPES }>(
+export const fetchUsers = createAsyncThunk<IUser[], { sort?: SORT_TYPES }>(
   "users/fetchUsers",
-  async ({ sort }) => {
+  async ({ sort = SORT_TYPES.ASC }) => {
     const response = await userService.getUsers({ query: { sort } });
 
     return response;

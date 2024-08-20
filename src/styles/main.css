@@ -9,7 +9,3 @@
 .small .dynamic-form-footer {
   width: calc(100% - 80px);
 }
-
-* {
-  scroll-behavior: smooth;
-}

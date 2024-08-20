@@ -134,10 +134,8 @@ const useProductsTableHook = () => {
   const onRowHandle = useCallback(
     (product: IProduct) => {
       return {
-        onClick: (event: MouseEvent) => {
-          if (event.ctrlKey) {
-            window.open(`/products/product?update=${product?.id}`, "_blank");
-          }
+        onClick: () => {
+          navigate(`/products/product?update=${product?.id}`);
         },
         onDoubleClick: () => {
           navigate(`/products/product?update=${product?.id}`);
