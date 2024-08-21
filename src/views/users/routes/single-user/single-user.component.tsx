@@ -23,6 +23,7 @@ const SingleUser = () => {
     formLoading,
     coordinates,
     $breadcrumbs,
+    navigateToUserCarts,
   } = useSingleUserHook();
 
   return (
@@ -38,7 +39,11 @@ const SingleUser = () => {
         <div className="flex items-center justify-between">
           <h2 className="text-[24px]">{$breadcrumbs?.at(-1)?.title}</h2>
           {update && (
-            <Button icon={<ShoppingOutlined />} type="primary">
+            <Button
+              type="primary"
+              icon={<ShoppingOutlined />}
+              onClick={navigateToUserCarts}
+            >
               To user's carts
             </Button>
           )}

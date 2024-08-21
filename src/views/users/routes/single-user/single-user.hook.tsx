@@ -125,6 +125,11 @@ const useSingleUserHook = () => {
     [form]
   );
 
+  const navigateToUserCarts = useCallback(
+    () => navigate(`/users/cart/${update}`),
+    [navigate, update]
+  );
+
   return {
     form,
     update,
@@ -136,6 +141,7 @@ const useSingleUserHook = () => {
     formLoading,
     coordinates,
     $breadcrumbs,
+    navigateToUserCarts,
   };
 };
 

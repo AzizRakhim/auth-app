@@ -1,18 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SORT_TYPES } from "@types";
 import { IUser } from "@users/types";
+import { ICart } from "@carts/types";
 import { userService } from "@users/services/user.services";
 
 export type UsersSliceType = {
   users: IUser[];
   loading: boolean;
   singleUser: IUser | null;
+  userCarts: ICart[];
 };
 
 const initialState: UsersSliceType = {
   users: [],
   loading: false,
   singleUser: null,
+  userCarts: [],
 };
 
 export const fetchUsers = createAsyncThunk<IUser[], { sort?: SORT_TYPES }>(
@@ -33,6 +36,15 @@ export const fetchSingleUser = createAsyncThunk<IUser, string>(
   }
 );
 
+export const fetchUserCarts = createAsyncThunk<ICart[], string>(
+  "users/fetchUserCarts",
+  async (id) => {
+    const response = await userService.getUserCarts(id);
+
+    return response;
+  }
+);
+
 export const UsersSlice = createSlice({
   name: "users",
   initialState,
@@ -42,6 +54,9 @@ export const UsersSlice = createSlice({
     },
     setSingleUser: (state, { payload }: PayloadAction<IUser | null>) => {
       state.singleUser = payload;
+    },
+    setUserCarts: (state, { payload }: PayloadAction<ICart[]>) => {
+      state.userCarts = payload;
     },
   },
   extraReducers: (builder) => {
@@ -70,6 +85,19 @@ export const UsersSlice = createSlice({
         }
       )
       .addCase(fetchSingleUser.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchUserCarts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(
+        fetchUserCarts.fulfilled,
+        (state, action: PayloadAction<ICart[]>) => {
+          state.loading = false;
+          state.userCarts = action.payload;
+        }
+      )
+      .addCase(fetchUserCarts.rejected, (state) => {
         state.loading = false;
       });
   },

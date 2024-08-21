@@ -5,7 +5,7 @@ export interface ICart {
   products: CartProductType[];
 }
 
-type CartProductType = {
+export type CartProductType = {
   productId: number;
   quantity: number;
 };

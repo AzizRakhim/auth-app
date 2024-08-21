@@ -7,9 +7,9 @@ function CustomTable<RecordType extends AnyObject>({
 }: TableProps<RecordType>) {
   return (
     <Table
-      {...rest}
-      rowKey={(record) => record?.key}
+      rowKey={(record) => record?.id}
       pagination={{ pageSize: 10 }}
+      {...rest}
     />
   );
 }

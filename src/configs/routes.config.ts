@@ -45,9 +45,9 @@ const privateRoutes = [
   },
   {
     key: "users-cart-id",
-    path: `/users/cart/id`,
+    path: `/users/cart/:id`,
     component: lazy(
-      () => import("@users/routes/single-user/single-user.component")
+      () => import("@users/routes/user-carts/user-carts.component")
     ),
   },
   {
