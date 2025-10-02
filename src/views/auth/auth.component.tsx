@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import useAuthHook from "@auth/hooks/auth.hook";
 import Logo from "@assets/images/long-log.webp";
 import { SignInFieldType } from "@auth/types/auth.types";
@@ -34,6 +34,11 @@ const Auth = () => {
           >
             <Input.Password />
           </Form.Item>
+
+          <Typography>
+            <pre>Username: mor_2314</pre>
+            <pre>Password: 83r5^_</pre>
+          </Typography>
 
           <Form.Item className="mb-0">
             <Button
